@@ -27,7 +27,6 @@ const addUser = ({ id, username, room }) => {
     // Store user
     const user = { id, username, room }
     users.push(user)
-    console.log('Success')
     return { user }
 }
 
@@ -38,15 +37,17 @@ const removeUser = (id) => {
     }
 }
 
-addUser({ 
-    id: 22,
-    username: 'Xing Ern',
-    room: 'Tampines'
-})
+const getUser = (id) => {
+    return users.find((user) => user.id === id)
+}
 
-console.log(users)
+const getUsersInRoom = (room) => {
+    return users.filter((user) => user.room === room)
+}
 
-const removedUser = removeUser(22)
-
-console.log(removedUser)
-console.log(users)
+module.exports = {
+    addUser,
+    removeUser,
+    getUser,
+    getUsersInRoom
+}
